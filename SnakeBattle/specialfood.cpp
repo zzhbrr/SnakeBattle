@@ -10,6 +10,9 @@ SpecialFood::SpecialFood(QGraphicsScene *scence, int X, int Y): Items(scence, X,
     //设置大小
     setScale(0.05);
 
+    // 设置角度
+    setRotation(Util::Random(-75, 75));
+
     //将食物加入
     scence->addItem(this);
 }

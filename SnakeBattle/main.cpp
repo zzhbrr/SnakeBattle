@@ -4,6 +4,8 @@
 #include <QApplication>
 
 bool HaveBegun = false;
+bool BeginTheGame = false;
+bool PlayerAlive = false;
 
 int main(int argc, char *argv[])
 {

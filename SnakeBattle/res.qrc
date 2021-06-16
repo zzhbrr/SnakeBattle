@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="images">
-        <file>picture/hexagon.jpg</file>
         <file>picture/icon.jpg</file>
         <file>picture/Snake.png</file>
-        <file>picture/jiangan.jpg</file>
         <file>picture/mainscence_back.jpg</file>
         <file>picture/mainscence_help.png</file>
         <file>picture/snakeUnit3.png</file>
@@ -13,13 +11,11 @@
         <file>picture/snakeUnit7.png</file>
         <file>picture/snakeUnit1.png</file>
         <file>picture/back.jpg</file>
-        <file>picture/f1.png</file>
-        <file>picture/f2.png</file>
-        <file>picture/f3.png</file>
-        <file>picture/f4.png</file>
-        <file>picture/f5.png</file>
-        <file>picture/f6.png</file>
-        <file>picture/f7.png</file>
+        <file>picture/nmf1.png</file>
+        <file>picture/nmf2.png</file>
+        <file>picture/nmf3.png</file>
+        <file>picture/nmf4.png</file>
+        <file>picture/nmf5.png</file>
         <file>picture/snakeUnit1Head.png</file>
         <file>picture/snakeUnit2Head.png</file>
         <file>picture/snakeUnit3Head.png</file>
@@ -34,13 +30,10 @@
         <file>picture/snakeUnit9Head.png</file>
         <file>picture/snakeUnit10.png</file>
         <file>picture/snakeUnit10Head.png</file>
-        <file>picture/illFood.png</file>
-        <file>picture/stone.png</file>
-        <file>picture/mush1.png</file>
-        <file>picture/mush2.png</file>
         <file>picture/spf1.png</file>
         <file>picture/spf2.png</file>
         <file>picture/spf3.png</file>
         <file>picture/spf4.png</file>
+        <file>picture/ddf.png</file>
     </qresource>
 </RCC>

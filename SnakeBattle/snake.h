@@ -6,6 +6,7 @@
 #include <QGraphicsTextItem>
 #include <QString>
 #include <QPair>
+#include <QTimer>
 #include "snakeunit.h"
 
 class Snake: public QObject
@@ -18,7 +19,9 @@ public:
     int score; // 蛇的分数
     int size; // 蛇的大小
     int speed; // 蛇的速度
-    int foodcount; //吃的食物的数量，每吃5个食物score+1
+    int speedlimit; // 可以让Ai蛇对准食物
+    int foodcount; // 吃的食物的数量，每吃3个食物score+1
+    QString typ; // 蛇的类型Ai/Player
     //QList<QPair<QGraphicsPixmapItem*, Snake*> > body; // 存储蛇的身体单元
     QList<SnakeUnit *> body; // 存储蛇的身体单元
     QGraphicsTextItem *SnakeNameText; // 显示蛇的名字的元

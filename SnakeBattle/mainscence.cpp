@@ -12,6 +12,8 @@
 #include <QWidget>
 #include <QFont>
 #include <QPalette>
+#include <QLineEdit>
+#include <QIntValidator>
 
 #include "game.h"
 
@@ -24,7 +26,7 @@ MainScence::MainScence(QWidget *parent)
     , ui(new Ui::MainScence)
 {
     ui->setupUi(this);
-    //设置
+    //设置 窗口名称和图像
     this->setWindowTitle(tr("SnakeBattle_1.0"));
     this->setWindowIcon(QIcon(":/images/picture/icon.jpg"));
     this->setWindowIcon(QIcon(":/images/picture/Snake.png"));
@@ -35,7 +37,7 @@ MainScence::MainScence(QWidget *parent)
     this->setPalette(backg);
 
     //按钮的字体颜色
-    QPalette buttonpal;
+    QPalette buttonpal; // 调色板
     buttonpal.setColor(QPalette::ButtonText, QColor(128,0,0));
 
     //Help选项
@@ -53,6 +55,9 @@ MainScence::MainScence(QWidget *parent)
     connect(MainScence_Play, &QPushButton::clicked, this, &MainScence::PlayAction);
     MainScence_Play->move(1, 30);
 
+    // 设置默认name和num
+    name = "BriMon";
+    Ai_1_num = 5, Ai_2_num = 10;
 }
 
 void MainScence::HelpAction() {
@@ -75,23 +80,79 @@ void MainScence::HelpAction() {
     QLabel *HelpText3 = new QLabel(HelpWidget);
     HelpText3->move(15, 100);
     HelpText3->setText(tr("按Ctrl键可以加速 Shift键可以减速"));
+    QLabel *HelpText4 = new QLabel(HelpWidget);
+    HelpText4->move(15, 140);
+    HelpText4->setText(tr("按Space以开始或暂停 按Esc退出"));
 
     //创建Pushbutton
     QPushButton *HelpOKButton = new QPushButton(HelpWidget);
     HelpOKButton->setText(tr("OK"));
-    HelpOKButton->move(60, 150);
+    HelpOKButton->move(60, 160);
     connect(HelpOKButton, &QPushButton::clicked, HelpDialog, &QDialog::close);
 
     HelpDialog->show();
 }
 
 void MainScence::PlayAction() {
-    QString name;
-    //输入玩家名字
+    // 输入玩家名字和ai蛇的数量
+    // 创建QDialog
+    QDialog *OptionDialog = new QDialog(this);
+    QWidget *OptionWidget = new QWidget(OptionDialog);
+    OptionDialog->resize(300, 250);
+    OptionWidget->resize(300, 250);
+    OptionDialog->setWindowTitle(tr("Settings"));
 
+    InputNameEdit = new QLineEdit(OptionWidget);
+    InputNameEdit->resize(100, 25);
+    InputNameEdit->move(10, 40);
+    InputNameEdit->setPlaceholderText(tr("BriMon"));
 
-    //创建画布 开始游戏
-    game = new Game(name);
+    InputNum1Edit = new QLineEdit(OptionWidget);
+    InputNum1Edit->resize(100, 25);
+    InputNum1Edit->move(10, 90);
+    InputNum1Edit->setPlaceholderText(tr("默认5"));
+    InputNum1Edit->setValidator(new QIntValidator(0,20,this));
+
+    InputNum2Edit = new QLineEdit(OptionWidget);
+    InputNum2Edit->resize(100, 25);
+    InputNum2Edit->move(10, 140);
+    InputNum2Edit->setPlaceholderText(tr("默认10"));
+    InputNum2Edit->setValidator(new QIntValidator(0,20,this));
+
+    QLabel *Tip1 = new QLabel(OptionWidget);
+    Tip1->setText(tr("请输入名字"));
+    Tip1->move(10, 10);
+    Tip1->resize(150, 30);
+
+    QLabel *Tip2 = new QLabel(OptionWidget);
+    Tip2->setText(tr("请输入Ai蛇(简单)的数量[0, 20]"));
+    Tip2->move(10, 60);
+    Tip2->resize(250, 30);
+
+    QLabel *Tip3 = new QLabel(OptionWidget);
+    Tip3->setText(tr("请输入Ai蛇(困难)的数量[0, 20]"));
+    Tip3->move(10, 110);
+    Tip3->resize(250, 30);
+
+    ButtonPlay = new QPushButton(OptionWidget);
+    ButtonPlay->resize(60, 20);
+    ButtonPlay->setText(tr("PLAY"));
+    ButtonPlay->move(100, 175);
+    connect(ButtonPlay, &QPushButton::clicked, this, &MainScence::EnterTheGame);
+
+    OptionDialog->show();
+
+}
+
+void MainScence::EnterTheGame() {
+    //开始游戏
+    if (!InputNameEdit->text().isEmpty())
+        name = InputNameEdit->text();
+    if (!InputNum1Edit->text().isEmpty())
+        Ai_1_num = InputNum1Edit->text().toInt();
+    if (!InputNum2Edit->text().isEmpty())
+        Ai_2_num = InputNum2Edit->text().toInt();
+    game = new Game(name, Ai_1_num, Ai_2_num);
     game->show();
 }
 

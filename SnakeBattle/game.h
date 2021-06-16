@@ -6,15 +6,21 @@
 #include <qstring.h>
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
+#include <QGraphicsTextItem>
 #include <QTimer>
 #include <QKeyEvent>
+#include <QString>
+#include <QList>
 
 #include "util.h"
 #include "normalfood.h"
 #include "specialfood.h"
 #include "deadfood.h"
 #include "playersnake.h"
-#include "aisnake.h"
+#include "snake.h"
+#include "aisnake1.h"
+#include "aisnake2.h"
+#include "rankboard.h"
 
 class Game : public QGraphicsView
 {
@@ -25,12 +31,18 @@ public:
 
 public:
     Game();
-    Game(QString user_name);
+    Game(QString user_name, int Ai_1_num, int Ai_2_num);
+    QString PlayerName;
     PlayerSnake *player;
     void keyPressEvent(QKeyEvent *event);
+    void GenerateAiSnakes(int num1, int num2);
+
 
 public slots:
     void GenerateFood();
+    void GenerateANewSnake();
 };
 
 #endif // GAME_H
+
+// 不知道如何让槽函数带参数

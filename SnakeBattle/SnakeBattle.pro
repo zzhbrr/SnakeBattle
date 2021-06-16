@@ -17,13 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Items.cpp \
-    aisnake.cpp \
+    aisnake1.cpp \
+    aisnake2.cpp \
     deadfood.cpp \
     game.cpp \
     main.cpp \
     mainscence.cpp \
     normalfood.cpp \
     playersnake.cpp \
+    rankboard.cpp \
     snake.cpp \
     snakeunit.cpp \
     specialfood.cpp \
@@ -31,12 +33,14 @@ SOURCES += \
 
 HEADERS += \
     Items.h \
-    aisnake.h \
+    aisnake1.h \
+    aisnake2.h \
     deadfood.h \
     game.h \
     mainscence.h \
     normalfood.h \
     playersnake.h \
+    rankboard.h \
     snake.h \
     snakeunit.h \
     specialfood.h \

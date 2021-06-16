@@ -1,5 +1,4 @@
 #include "snake.h"
-#include "util.h"
 #include "game.h"
 #include "specialfood.h"
 #include <QDebug>
@@ -7,6 +6,7 @@
 extern Game *game;
 QGraphicsScene *Sce;
 extern bool HaveBegun;
+extern bool PlayerAlive;
 
 Snake::Snake(QGraphicsScene *scence, QString name, int leng) {
     Sce = scence;
@@ -15,6 +15,7 @@ Snake::Snake(QGraphicsScene *scence, QString name, int leng) {
     score = 0;
     size = 6;
     speed = size + 2;
+    speedlimit = -1;
     foodcount = 0;
     alive = true;
 
@@ -33,27 +34,31 @@ Snake::Snake(QGraphicsScene *scence, QString name, int leng) {
     // 蛇的移动
     SnakeMoveTimer = new QTimer();
     connect(SnakeMoveTimer, &QTimer::timeout, this, &Snake::Move);
-    SnakeMoveTimer->start(100); // 每计100次进行一次移动
+    SnakeMoveTimer->start(100); // 每计0.1s进行一次移动
 }
 
 
 void Snake::Move() {
     if (HaveBegun) {
+        int nowspeed = (speedlimit == -1) ? speed : speedlimit;
+        speedlimit = -1;
         // 移动身体
         for (int i = body.size() - 1; i >= 1; i --) {
             body[i]->setX(body[i - 1]->x());
             body[i]->setY(body[i - 1]->y());
         }
         // 移动头
-        if (direction == "right") {
-             body[0]->setX(body[0]->x() + speed);
-        } else if (direction == "left")  {
-             body[0]->setX(body[0]->x() - speed);
-        } else if (direction == "up") {
-            body[0]->setY(body[0]->y() - speed);
-        } else {
-            body[0]->setY(body[0]->y() + speed);
-        }
+        if (direction == "right") body[0]->setX(body[0]->x() + nowspeed);
+        else if (direction == "left") body[0]->setX(body[0]->x() - nowspeed);
+        else if (direction == "up") body[0]->setY(body[0]->y() - nowspeed);
+        else body[0]->setY(body[0]->y() + nowspeed);
+
+        // 超出边界的情况判定
+        if (body[0]->x() > Sce->width()) body[0]->setX(0);
+        if (body[0]->x() < 0) body[0]->setX(Sce->width());
+        if (body[0]->y() > Sce->height()) body[0]->setY(0);
+        if (body[0]->y() < 0) body[0]->setY(Sce->height());
+
 
         // 移动头的判定区域
         boundary->setX(body[0]->x());
@@ -64,7 +69,6 @@ void Snake::Move() {
         SnakeNameText->setY(body[0]->y() + 10);
 
         // 检测碰撞事件
-
         QList<QGraphicsItem *> colliding_items = body[0]->collidingItems();
         for (int i = 0; i < colliding_items.size(); i ++) {
             // 碰撞的是正常食物
@@ -73,24 +77,28 @@ void Snake::Move() {
                 Sce->removeItem(colliding_items[i]);
                 delete colliding_items[i];
 
-                foodcount ++;
-                if (foodcount >= 3) {
-                    foodcount -= 3;
-                    score ++;
-                    AppendNewUnit();
-                }
+                score++;
+                AppendNewUnit();
+//                foodcount ++;
+//                if (foodcount >= 2) {
+//                    foodcount -= 2;
+//                    score ++;
+//                    AppendNewUnit();
+//                }
             } else if (typeid (*(colliding_items[i])) == typeid (SpecialFood)) {
                 // 碰撞的是特殊食物
                 // 清除食物元
                 Sce->removeItem(colliding_items[i]);
                 delete colliding_items[i];
 
-                foodcount += 2;
-                if (foodcount >= 5) {
-                    foodcount -= 5;
-                    score ++;
-                    AppendNewUnit();
-                }
+                score += 2;
+                AppendNewUnit(), AppendNewUnit();
+//                foodcount += 2;
+//                if (foodcount >= 2) {
+//                    foodcount -= 2;
+//                    score ++;
+//                    AppendNewUnit();
+//                }
             } else if (typeid (*(colliding_items[i])) == typeid (DeadFood)) {
                 // 碰撞的是致死食物
                 // 清除食物元
@@ -128,6 +136,12 @@ void Snake::DestroySnake() {
     }
     // 删除蛇的头部碰撞圆
     Sce->removeItem(boundary);
+
+    //qDebug() << "Destroy" << endl;
+    // 5s后生成新的蛇
+    if (typ == "player") PlayerAlive = false;
+    QTimer::singleShot(5000, game, &Game::GenerateANewSnake);
+
     delete this;
 }
 
@@ -156,3 +170,7 @@ void Snake::ChangeDirection(QString dir) {
 // 结果发现必须新建一个类
 // 设置一个Q..Item的派生类，就可以强制判断了
 // 重构代码
+
+// 增加了身体增长的速度
+// 增大了游戏可玩性
+// Ai_2开始变傻
