@@ -3,7 +3,7 @@ A snakebattle game develpoed by Qt5.
 
 Based on this [project](https://github.com/bibhuticoder/QtSnake) to adapt and reconstruct.
 
-Thanks you for your inspiration.
+Thanks for your inspiration.
 
 I optimize the architecture of the game and the graph of the game.
 
