@@ -16,7 +16,7 @@ Open **SnakeBattle.pro** with QtCreator.
 
 Compile and run.
 
-Or just run **SnakeBattle.exe**.
+Or just run **SnakeBattle.exe** in **SnakeBattle_installpackage** .
 
 # Screen capture
 
@@ -42,4 +42,4 @@ Or just run **SnakeBattle.exe**.
 
 用OtCreator打开 **SnakeBattle.pro** 并编译运行。
 
-或者直接打开 **SnakeBattle.exe** 。
+或者直接打开安装包中的 **SnakeBattle.exe** 。
