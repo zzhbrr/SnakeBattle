@@ -18,6 +18,7 @@ Compile and run.
 
 Or just run **SnakeBattle.exe** in **SnakeBattle_installpackage** .
 
+
 # Screen capture
 
 ![image](https://user-images.githubusercontent.com/82373845/122174840-aa824a80-ceb5-11eb-98be-d37a3823f2dc.png)
@@ -40,6 +41,8 @@ Or just run **SnakeBattle.exe** in **SnakeBattle_installpackage** .
 
 **~优化了Ai蛇的算法，它们只有在脑袋前面突然出现石头或其他蛇的时候才会死掉。（这好像破坏了游戏的平衡性）**
 
+
 用QtCreator打开 **SnakeBattle.pro** 并编译运行。
 
 或者直接打开安装包中的 **SnakeBattle.exe** 。
+
