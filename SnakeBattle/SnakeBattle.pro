@@ -19,6 +19,7 @@ SOURCES += \
     Items.cpp \
     aisnake1.cpp \
     aisnake2.cpp \
+    clocks.cpp \
     deadfood.cpp \
     game.cpp \
     main.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     Items.h \
     aisnake1.h \
     aisnake2.h \
+    clocks.h \
     deadfood.h \
     game.h \
     mainscence.h \
@@ -54,5 +56,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
+RESOURCES +=  \
     res.qrc
+

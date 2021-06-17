@@ -42,6 +42,7 @@ AiSnake_2::AiSnake_2(QGraphicsScene *scence, QString name, int len, int X, int Y
     newunit->setPixmap(QPixmap(":/images/picture/snakeUnit" + QString::number(color) + "Head.png"));
     newunit->setTransformOriginPoint(newunit->pixmap().width()/2, newunit->pixmap().height()/2); // 将位图的中心点作为原点
     newunit->setPos(X, Y); // 将蛇头置于指定位置
+    newunit->setZValue(0);
     newunit->belong = this;
     scence->addItem(newunit);
     body.append(newunit);
