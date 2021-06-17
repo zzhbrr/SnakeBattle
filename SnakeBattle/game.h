@@ -11,6 +11,7 @@
 #include <QKeyEvent>
 #include <QString>
 #include <QList>
+#include <QMessageBox>
 
 #include "util.h"
 #include "normalfood.h"
@@ -20,6 +21,7 @@
 #include "snake.h"
 #include "aisnake1.h"
 #include "aisnake2.h"
+#include "clocks.h"
 #include "rankboard.h"
 
 class Game : public QGraphicsView
@@ -34,6 +36,8 @@ public:
     Game(QString user_name, int Ai_1_num, int Ai_2_num);
     QString PlayerName;
     PlayerSnake *player;
+    QMessageBox *Result;
+    Clocks *ccl;
     void keyPressEvent(QKeyEvent *event);
     void GenerateAiSnakes(int num1, int num2);
 
@@ -41,6 +45,8 @@ public:
 public slots:
     void GenerateFood();
     void GenerateANewSnake();
+    void GameEnd();
+    void DeleteResult();
 };
 
 #endif // GAME_H

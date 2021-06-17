@@ -145,7 +145,7 @@ void MainScence::PlayAction() {
 }
 
 void MainScence::EnterTheGame() {
-    //开始游戏
+    // 开始游戏
     if (!InputNameEdit->text().isEmpty())
         name = InputNameEdit->text();
     if (!InputNum1Edit->text().isEmpty())

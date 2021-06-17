@@ -14,9 +14,10 @@ Thanks for your inspiration.
 # usage
 Open **SnakeBattle.pro** with QtCreator.
 
-Then Compile and run.
+Compile and run.
 
-Or just run **SnakeBattle.exe** .
+Or just run **SnakeBattle.exe** in **SnakeBattle_installpackage** .
+
 
 # Screen capture
 
@@ -40,6 +41,8 @@ Or just run **SnakeBattle.exe** .
 
 **~优化了Ai蛇的算法，它们只有在脑袋前面突然出现石头或其他蛇的时候才会死掉。（这好像破坏了游戏的平衡性）**
 
-用OtCreator打开 **SnakeBattle.pro** 并编译运行。
 
-或者直接运行 **SnakeBattle.exe** 文件。
+用QtCreator打开 **SnakeBattle.pro** 并编译运行。
+
+或者直接打开安装包中的 **SnakeBattle.exe** 。
+

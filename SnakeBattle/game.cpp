@@ -1,5 +1,6 @@
 #include "game.h"
 #include <QDebug>
+#include <QMessageBox>
 
 extern bool HaveBegun;
 extern bool BeginTheGame;
@@ -48,6 +49,10 @@ Game::Game(QString name, int Ai_1_num, int Ai_2_num) {
     QTimer *AddFoodTimer = new QTimer();
     connect(AddFoodTimer, SIGNAL(timeout()), this, SLOT(GenerateFood()));
     AddFoodTimer->start(200);
+
+    // 生成倒计时时钟
+    ccl = new Clocks(game_scence);
+//    connect(ccl, &Clocks::TimeOutt, this, &Game::GameEnd);
 }
 
 void Game::GenerateFood() {
@@ -109,3 +114,17 @@ void Game::GenerateANewSnake() {
     }
 }
 
+void Game::GameEnd() {
+    ccl->Remaintime = 300;
+    qDebug() << "GameEnd" << endl;
+    Result = new QMessageBox(this);
+    HaveBegun = false;
+    Result->setText(tr("GameEnd"));
+    Result->show();
+    QTimer::singleShot(5000, this, &Game::DeleteResult);
+}
+
+void Game::DeleteResult() {
+    delete Result;
+    this->close();
+}
