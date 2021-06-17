@@ -5,11 +5,11 @@ Based on this [project](https://github.com/bibhuticoder/QtSnake) to adapt and re
 
 Thanks for your inspiration.
 
-I optimize the architecture of the game and the graph of the game.
+#Optimize the architecture of the game and the graph of the game.# 
 
-I add some new useful functions and modify some settings to make the game more playable.
+#Add some new useful functions and modify some settings to make the game more playable.#
 
-I optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.
+#Optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.#
 
 # usage
 Open #SnakeBattle.pro# with QtCreator.
