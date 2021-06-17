@@ -5,14 +5,14 @@ Based on this [project](https://github.com/bibhuticoder/QtSnake) to adapt and re
 
 Thanks for your inspiration.
 
-####~Optimize the architecture of the game and the graph of the game.
+**~Optimize the architecture of the game and the graph of the game.**
 
-####~Add some new useful functions and modify some settings to make the game more playable.
+**~Add some new useful functions and modify some settings to make the game more playable.**
 
-####~Optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.
+**~Optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.**
 
 # usage
-Open #SnakeBattle.pro# with QtCreator.
+Open **SnakeBattle.pro**with QtCreator.
 Then Compile and run.
 
 # Screen capture
@@ -31,10 +31,10 @@ Then Compile and run.
 
 谢谢你提供的灵感。
 
-优化了游戏的体系结构和游戏图画。
+**~优化了游戏的体系结构和游戏图画。**
 
-增加了一些功能并更改了一些设定，以使游戏更具可玩性。
+**~增加了一些功能并更改了一些设定，以使游戏更具可玩性。**
 
-优化了Ai蛇的算法，它们只有在脑袋前面突然出现石头或其他蛇的时候才会死掉。（这好像破坏了游戏的平衡性）
+**~优化了Ai蛇的算法，它们只有在脑袋前面突然出现石头或其他蛇的时候才会死掉。（这好像破坏了游戏的平衡性）**
 
-用OtCreator打开 #SnakeBattle.pro# 并编译运行。
+用OtCreator打开 **SnakeBattle.pro** 并编译运行。
