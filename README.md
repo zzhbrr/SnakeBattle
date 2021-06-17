@@ -12,7 +12,7 @@ Thanks for your inspiration.
 **~Optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.**
 
 # usage
-Open **SnakeBattle.pro**with QtCreator.
+Open **SnakeBattle.pro** with QtCreator.
 Then Compile and run.
 
 # Screen capture
