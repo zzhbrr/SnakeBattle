@@ -11,6 +11,10 @@ Thanks for your inspiration.
 
 **~Optimize the algorithm of AI snake. It seems that they will never dead unless some items appears suddenly before them.**
 
+
+But the game still has the problem of memory leak.
+
+
 # usage
 Open **SnakeBattle.pro** with QtCreator.
 
@@ -40,6 +44,8 @@ Or just run **SnakeBattle.exe** in **SnakeBattle_installpackage** .
 **~增加了一些功能并更改了一些设定，以使游戏更具可玩性。**
 
 **~优化了Ai蛇的算法，它们只有在脑袋前面突然出现石头或其他蛇的时候才会死掉。（这好像破坏了游戏的平衡性）**
+
+但游戏还有内存泄露的问题没有解决。
 
 
 用QtCreator打开 **SnakeBattle.pro** 并编译运行。
